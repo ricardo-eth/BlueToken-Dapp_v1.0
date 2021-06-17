@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { Web3Context } from "web3-hooks";
 import {
@@ -43,7 +43,7 @@ export default function Header() {
                 <MetaMaskInfo />
               </Box>
             )}
-            <Box mr={5}>
+            <Box mr={5} display={{ base: "none", md: "flex" }}>
               {colorMode === "light" ? (
                 <Button onClick={toggleColorMode}>
                   <MoonIcon />
@@ -81,16 +81,22 @@ export default function Header() {
                 {!web3State.isLogged ? (
                   <>
                     <MenuItem>
-                      <MenuItem onClick={login}>Connect</MenuItem>
+                      <MenuItem onClick={login}>Unlock Wallet</MenuItem>
                     </MenuItem>
                   </>
                 ) : (
                   <>
-                    <NavLink to="/Account">
-                      <MenuItem>Account</MenuItem>
+                    <NavLink to="/">
+                      <MenuItem>Home</MenuItem>
+                    </NavLink>
+                    <NavLink to="/ERC20">
+                      <MenuItem>ERC20 - BKTn</MenuItem>
+                    </NavLink>
+                    <NavLink to="/Faucet">
+                      <MenuItem>Faucet - BKTn</MenuItem>
                     </NavLink>
                     <MenuDivider />
-                    <MenuItem>Deconnect</MenuItem>
+                    <MenuItem>Disconnect</MenuItem>
                   </>
                 )}
               </MenuList>

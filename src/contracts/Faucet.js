@@ -1,4 +1,4 @@
-export const FaucetAddress = "0x60eAEC2089C4170aAbF24E2bAB6813b5d0CF743a";
+export const FaucetAddress = "0xf3857b1946f189352aC5D9bD20DAB0Dd6021D655";
 
 export const FaucetAbi = [
   {
@@ -9,9 +9,9 @@ export const FaucetAbi = [
         type: "address",
       },
       {
-        internalType: "uint64",
+        internalType: "uint128",
         name: "transferAmount_",
-        type: "uint64",
+        type: "uint128",
       },
       {
         internalType: "uint48",
@@ -21,6 +21,25 @@ export const FaucetAbi = [
     ],
     stateMutability: "nonpayable",
     type: "constructor",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "claimer",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "Claimed",
+    type: "event",
   },
   {
     anonymous: false,
@@ -53,9 +72,9 @@ export const FaucetAbi = [
     name: "delay",
     outputs: [
       {
-        internalType: "uint128",
+        internalType: "uint48",
         name: "",
-        type: "uint128",
+        type: "uint48",
       },
     ],
     stateMutability: "view",
@@ -116,12 +135,12 @@ export const FaucetAbi = [
   {
     inputs: [
       {
-        internalType: "uint64",
+        internalType: "uint128",
         name: "newAmount_",
-        type: "uint64",
+        type: "uint128",
       },
     ],
-    name: "setTransfertAmount",
+    name: "setTransferAmount",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -140,6 +159,19 @@ export const FaucetAbi = [
     type: "function",
   },
   {
+    inputs: [],
+    name: "transferAmount",
+    outputs: [
+      {
+        internalType: "uint128",
+        name: "",
+        type: "uint128",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "address",
@@ -150,19 +182,6 @@ export const FaucetAbi = [
     name: "transferOwnership",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "transfertAmount",
-    outputs: [
-      {
-        internalType: "uint128",
-        name: "",
-        type: "uint128",
-      },
-    ],
-    stateMutability: "view",
     type: "function",
   },
 ];

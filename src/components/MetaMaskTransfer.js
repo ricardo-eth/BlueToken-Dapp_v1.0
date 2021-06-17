@@ -2,18 +2,8 @@ import React from "react";
 import { useContext, useState } from "react";
 import { ethers } from "ethers";
 import { Web3Context } from "web3-hooks";
-import {
-  Flex,
-  Heading,
-  HStack,
-  Stack,
-  Input,
-  Button,
-  Divider,
-  SimpleGrid,
-  Box,
-} from "@chakra-ui/react";
-import { useColorModeValue, chakra } from "@chakra-ui/react";
+import { Flex, Heading, Stack, Input, Button, Box } from "@chakra-ui/react";
+import { useColorModeValue } from "@chakra-ui/react";
 
 function MetaMaskTransfer() {
   const [web3State] = useContext(Web3Context);

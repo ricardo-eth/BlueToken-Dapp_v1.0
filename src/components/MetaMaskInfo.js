@@ -60,8 +60,12 @@ const MetaMaskInfo = () => {
           )}
         </Button>
 
-        <Box>{web3State.balance} ETH</Box>
-        <Box>{web3State.networkName}</Box>
+        <Box display={{ base: "none", md: "flex" }}>
+          {web3State.balance} ETH
+        </Box>
+        <Box display={{ base: "none", md: "flex" }}>
+          {web3State.networkName}
+        </Box>
       </HStack>
     </>
   );

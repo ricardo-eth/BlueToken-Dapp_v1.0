@@ -5,6 +5,7 @@ import Navigation from "./Navigation/Navigation";
 import NavigationLogged from "./Navigation/NavigationLogged";
 import MetaMaskBalanceOf from "./MetaMaskBalanceOf";
 import MetaMaskTransfer from "./MetaMaskTransfer";
+import Countdown from "./Countdown";
 
 export {
   HeaderComp,
@@ -14,4 +15,5 @@ export {
   NavigationLogged,
   MetaMaskBalanceOf,
   MetaMaskTransfer,
+  Countdown,
 };

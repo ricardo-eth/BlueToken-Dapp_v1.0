@@ -1,24 +1,45 @@
-import { useState, useEffect } from "react";
-import { Flex, Heading, Center, Button, BeatLoader } from "@chakra-ui/react";
-import { HeaderComp as Header } from "../components";
+import { useState, useEffect, useContext } from "react";
+import {
+  Flex,
+  Heading,
+  Center,
+  Button,
+  Box,
+  Stack,
+  useColorModeValue,
+  useToast,
+} from "@chakra-ui/react";
+import { HeaderComp as Header, Countdown } from "../components";
 import { useContract } from "web3-hooks";
 import { FaucetAddress, FaucetAbi } from "../contracts/Faucet";
+import { ethers } from "ethers";
+import { Web3Context } from "web3-hooks";
 
 function FaucetPage() {
+  const [web3State] = useContext(Web3Context);
   const faucet = useContract(FaucetAddress, FaucetAbi);
-  const [loading, setLoading] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [btnLoading, setBtnLoading] = useState(false);
+  const [amount, setAmount] = useState(0);
+  const [counter, setCounter] = useState(0);
+  const toast = useToast();
 
   const handleClaimToken = async () => {
     try {
-      setLoading(true);
+      setBtnLoading(true);
       const tx = await faucet.claimToken();
       await tx.wait();
-      console.log("Fauceted");
+      const rest = await faucet.timeRest();
+      setCounter(Number(rest.toString()));
     } catch (e) {
-      console.error(e);
+      console.log(e);
+      toast({
+        title: `${e.message}`,
+        status: "error",
+        isClosable: true,
+      });
     } finally {
-      setLoading(false);
+      setBtnLoading(false);
     }
   };
 
@@ -27,14 +48,47 @@ function FaucetPage() {
       const timeRest = async () => {
         try {
           const rest = await faucet.timeRest();
-          setTimeLeft(rest);
+          const combien = await faucet.transferAmount();
+          setCounter(Number(rest.toString()));
+          setAmount(combien.toString());
         } catch (e) {
-          console.error(e);
+          toast({
+            title: `${e.message}`,
+            status: "error",
+            isClosable: true,
+          });
+        } finally {
+          setLoading(false);
         }
       };
       timeRest();
     }
-  }, [faucet]);
+  }, [faucet, toast]);
+
+  useEffect(() => {
+    counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+  }, [counter]);
+
+  useEffect(() => {
+    if (faucet) {
+      const listener = (claimer, amount) => {
+        toast({
+          title: "Tokens Claimed",
+          description: `Claimer: ${claimer}, Amount: ${
+            ethers.utils.formatEther(amount).split(".")[0]
+          } BTKn to the mooon`,
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+      };
+      const filter = faucet.filters.Claimed(web3State.account);
+      faucet.on(filter, listener);
+      return () => {
+        faucet.off(filter, listener);
+      };
+    }
+  }, [faucet, web3State.account, toast]);
 
   return (
     <>
@@ -45,23 +99,39 @@ function FaucetPage() {
             <p>Faucet Page</p>
           </Heading>
         </Center>
-        <Flex height="100vh" alignItems="center" justifyContent="center">
-          <Flex direction="column" p={12} rounded={6}>
-            {timeLeft.toString() === "0" ? (
-              <Button
-                isLoading={loading}
-                loadingText="In process"
-                spinnerPlacement="start"
-                colorScheme="teal"
-                size="lg"
-                onClick={handleClaimToken}
-              >
-                Claim Token
-              </Button>
-            ) : (
-              <p>You need to wait {timeLeft.toString()}</p>
-            )}
-          </Flex>
+
+        <Flex p={5} alignItems="center" justifyContent="center">
+          <Box
+            mx="auto"
+            px={8}
+            py={4}
+            rounded="lg"
+            shadow="lg"
+            bg={useColorModeValue("gray.100", "gray.900")}
+            maxW="2xl"
+            w="400px"
+          >
+            <Box mt={2}>
+              <Stack spacing={3}>
+                {loading ? (
+                  <p>Loading...</p>
+                ) : counter === 0 ? (
+                  <Button
+                    isLoading={btnLoading}
+                    loadingText="In process"
+                    spinnerPlacement="start"
+                    colorScheme="teal"
+                    size="lg"
+                    onClick={handleClaimToken}
+                  >
+                    Get {ethers.utils.formatEther(amount).split(".")[0]} BTKn
+                  </Button>
+                ) : (
+                  <Countdown counter={counter} />
+                )}
+              </Stack>
+            </Box>
+          </Box>
         </Flex>
       </Flex>
     </>

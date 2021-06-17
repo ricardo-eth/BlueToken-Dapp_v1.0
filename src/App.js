@@ -15,13 +15,11 @@ function App() {
             <Route exact path="/ERC20" component={ERC20Page} />
             <Route exact path="/Faucet" component={FaucetPage} />
             <Route exact path="/Account" component={AccountPage} />
-            <Redirect to="/" />
           </>
         )}
         {!web3State.isLogged && (
           <>
             <Route exact path="/" component={HomePage} />
-            <Redirect to="/" />
           </>
         )}
       </Switch>
@@ -30,3 +28,5 @@ function App() {
 }
 
 export default App;
+
+// TODO : Gerer le redirect quand page error : Refresh = Redirect Home

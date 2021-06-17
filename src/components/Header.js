@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { Web3Context } from "web3-hooks";
 import {
   Box,
   Flex,
@@ -16,9 +18,11 @@ import {
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
+import MetaMaskInfo from "./MetaMaskInfo";
+
 export default function Header() {
   const { colorMode, toggleColorMode } = useColorMode();
-
+  const [web3State, login] = useContext(Web3Context);
   return (
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
@@ -30,8 +34,12 @@ export default function Header() {
               <NavLink to="/Faucet">Faucet</NavLink>
             </HStack>
           </HStack>
-
           <Flex alignItems={"center"}>
+            {web3State.isLogged && (
+              <Box mr={5}>
+                <MetaMaskInfo />
+              </Box>
+            )}
             <Box mr={5}>
               {colorMode === "light" ? (
                 <Button onClick={toggleColorMode}>
@@ -51,7 +59,7 @@ export default function Header() {
                 cursor={"pointer"}
               >
                 <Avatar size="sm">
-                  {colorMode === "light" ? (
+                  {!web3State.isLogged ? (
                     <AvatarBadge
                       bg="tomato"
                       borderColor="papayawhip"
@@ -67,9 +75,11 @@ export default function Header() {
                 </Avatar>
               </MenuButton>
               <MenuList>
-                {colorMode === "light" ? (
+                {!web3State.isLogged ? (
                   <>
-                    <MenuItem>Connect</MenuItem>
+                    <MenuItem>
+                      <MenuItem onClick={login}>Connect</MenuItem>
+                    </MenuItem>
                   </>
                 ) : (
                   <>

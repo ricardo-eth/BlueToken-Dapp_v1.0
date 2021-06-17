@@ -1,14 +1,13 @@
-import { Flex, Heading } from "@chakra-ui/react";
-import { HeaderComp as Header } from "../components";
+import { Flex } from "@chakra-ui/react";
+import { HeaderComp as Header, MetaMaskInstalled } from "../components";
 
 function HomePage() {
   return (
     <>
       <Header />
-      <Flex flexDirection="column" alignItems="center" m={4} h="300px">
-        <Heading size="m" as="i" alignSelf="flex-start">
-          <p>Home</p>
-        </Heading>
+
+      <Flex height="100vh" alignItems="center" justifyContent="center">
+        <MetaMaskInstalled />
       </Flex>
     </>
   );

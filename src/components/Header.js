@@ -27,7 +27,7 @@ export default function Header() {
             <NavLink to="/">Home</NavLink>
             <HStack as={"nav"} spacing={4} display={{ md: "flex" }}>
               <NavLink to="/ERC20">ERC20</NavLink>
-              <NavLink to="/Faucer">Faucer</NavLink>
+              <NavLink to="/Faucet">Faucet</NavLink>
             </HStack>
           </HStack>
 

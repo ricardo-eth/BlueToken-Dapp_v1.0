@@ -80,9 +80,7 @@ export default function Header() {
               <MenuList>
                 {!web3State.isLogged ? (
                   <>
-                    <MenuItem>
-                      <MenuItem onClick={login}>Unlock Wallet</MenuItem>
-                    </MenuItem>
+                    <MenuItem onClick={login}>Unlock Wallet</MenuItem>
                   </>
                 ) : (
                   <>

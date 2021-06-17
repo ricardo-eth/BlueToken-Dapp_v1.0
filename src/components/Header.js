@@ -1,11 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Web3Context } from "web3-hooks";
 import {
   Box,
   Flex,
   Avatar,
-  HStack,
   Button,
   Menu,
   MenuButton,
@@ -19,21 +18,25 @@ import {
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 import MetaMaskInfo from "./MetaMaskInfo";
+import Navigation from "./Navigation/Navigation";
 
 export default function Header() {
   const { colorMode, toggleColorMode } = useColorMode();
   const [web3State, login] = useContext(Web3Context);
+
+  /*
+  useEffect(() => {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      toggleColorMode();
+    }
+  }, []);
+  */
+
   return (
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <HStack spacing={8} alignItems={"center"}>
-            <NavLink to="/">Home</NavLink>
-            <HStack as={"nav"} spacing={4} display={{ md: "flex" }}>
-              <NavLink to="/ERC20">ERC20</NavLink>
-              <NavLink to="/Faucet">Faucet</NavLink>
-            </HStack>
-          </HStack>
+          <Navigation />
           <Flex alignItems={"center"}>
             {web3State.isLogged && (
               <Box mr={5}>

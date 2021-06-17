@@ -1,12 +1,21 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import { HeaderComp as Header, MetaMaskInstalled } from "../components";
 
 function HomePage() {
   return (
     <>
       <Header />
-
-      <Flex height="100vh" alignItems="center" justifyContent="center">
+      <Flex flexDirection="column" p={10}>
+        <Heading
+          textAlign="center"
+          as="h1"
+          size="4xl"
+          isTruncated
+          p={3}
+          marginBottom="10"
+        >
+          Welcome BlueToken Faucet
+        </Heading>
         <MetaMaskInstalled />
       </Flex>
     </>

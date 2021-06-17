@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { Web3Context } from "web3-hooks";
 
-import { HStack, Box } from "@chakra-ui/react";
 import {
+  HStack,
+  Box,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -12,8 +13,10 @@ import {
   ModalCloseButton,
   Button,
   useDisclosure,
+  Flex,
+  Link,
+  Stack,
 } from "@chakra-ui/react";
-import { Link } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 
 const MetaMaskInfo = () => {
@@ -25,24 +28,36 @@ const MetaMaskInfo = () => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Address</ModalHeader>
+          <ModalHeader>Your wallet</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>{web3State.account}</ModalBody>
+          <ModalBody>
+            <Stack spacing={3}>
+              <Box>{web3State.account}</Box>
+              <Link
+                href={`https://${
+                  web3State.chainId !== 1 ? web3State.networkName + "." : ""
+                }etherscan.io/address/${web3State.account}`}
+                isExternal
+              >
+                View on Etherscan <ExternalLinkIcon mx="2px" />
+              </Link>
+            </Stack>
+          </ModalBody>
 
           <ModalFooter>
-            <Link href="https://chakra-ui.com" isExternal>
-              Chakra Design system <ExternalLinkIcon mx="2px" />
-            </Link>
-            <Button>Log out</Button>
+            <Flex justifyContent="space-between" alignItems="center" mt={4}>
+              <Button>Log out</Button>
+            </Flex>
           </ModalFooter>
         </ModalContent>
       </Modal>
 
       <HStack spacing="24px">
         <Button onClick={onOpen}>
-          {web3State.account?.slice(0, 6) +
-            "..." +
-            web3State.account?.slice(-4)}
+          {web3State.account?.replace(
+            web3State.account?.substring(6, 38),
+            "..."
+          )}
         </Button>
 
         <Box>{web3State.balance} ETH</Box>

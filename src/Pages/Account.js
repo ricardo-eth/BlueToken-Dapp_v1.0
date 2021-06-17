@@ -7,7 +7,7 @@ function AccountPage() {
       <Header />
       <Flex flexDirection="column" alignItems="center" m={4} h="300px">
         <Heading size="m" as="i" alignSelf="flex-start">
-          <p>Account</p>
+          <p>Profile Setup</p>
         </Heading>
       </Flex>
     </>

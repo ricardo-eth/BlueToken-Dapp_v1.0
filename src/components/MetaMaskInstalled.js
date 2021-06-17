@@ -4,27 +4,43 @@ import { Web3Context } from "web3-hooks";
 import {
   Alert,
   AlertIcon,
-  AlertTitle,
-  AlertDescription,
   Stack,
   Heading,
   Button,
   Box,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 const MetaMaskInstalled = () => {
   const [web3State, login] = useContext(Web3Context);
 
   return (
-    <Box maxW="7xl" mx={"auto"} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
-      <Stack spacing={3}>
-        <Heading>Connexion</Heading>
+    <Box
+      maxW="7xl"
+      mx={"auto"}
+      pt={5}
+      px={{ base: 2, sm: 12, md: 17 }}
+      py={4}
+      rounded="lg"
+      shadow="lg"
+      bg={useColorModeValue("gray.100", "gray.900")}
+    >
+      <Stack spacing={3} alignItems="center">
+        <Heading>Connexion MetaMask</Heading>
 
-        <Text textAlign="center">MetaMask installed</Text>
+        <Text textAlign="center" fontWeight="bold">
+          MetaMask
+        </Text>
         {!web3State.isMetaMask && (
           <>
-            <Alert status="error">
+            <Alert
+              status="error"
+              alignItems="center"
+              justifyContent="center"
+              textAlign="center"
+              borderRadius="50"
+            >
               <AlertIcon />
               No-Installed
             </Alert>
@@ -32,16 +48,30 @@ const MetaMaskInstalled = () => {
         )}
         {web3State.isMetaMask && (
           <>
-            <Alert status="success">
+            <Alert
+              status="success"
+              alignItems="center"
+              justifyContent="center"
+              textAlign="center"
+              borderRadius="50"
+            >
               <AlertIcon />
               Success
             </Alert>
           </>
         )}
-        <Text textAlign="center">Web3</Text>
+        <Text textAlign="center" fontWeight="bold">
+          Web3
+        </Text>
         {!web3State.isWeb3 && (
           <>
-            <Alert status="warning">
+            <Alert
+              status="error"
+              alignItems="center"
+              justifyContent="center"
+              textAlign="center"
+              borderRadius="50"
+            >
               <AlertIcon />
               No-Injected
             </Alert>
@@ -49,16 +79,30 @@ const MetaMaskInstalled = () => {
         )}
         {web3State.isWeb3 && (
           <>
-            <Alert status="success">
+            <Alert
+              status="success"
+              alignItems="center"
+              justifyContent="center"
+              textAlign="center"
+              borderRadius="50"
+            >
               <AlertIcon />
               Injected
             </Alert>
           </>
         )}
-        <Text textAlign="center">Logged</Text>
+        <Text textAlign="center" fontWeight="bold">
+          Logged
+        </Text>
         {web3State.isLogged && (
           <>
-            <Alert status="success">
+            <Alert
+              status="success"
+              alignItems="center"
+              justifyContent="center"
+              textAlign="center"
+              borderRadius="50"
+            >
               <AlertIcon />
               Connected
             </Alert>
@@ -66,12 +110,30 @@ const MetaMaskInstalled = () => {
         )}
         {!web3State.isLogged && (
           <>
-            <Text textAlign="center">Please connect your Wallet</Text>
-            <Alert status="warning">
+            <Alert
+              status="warning"
+              alignItems="center"
+              justifyContent="center"
+              textAlign="center"
+              borderRadius="50"
+            >
               <AlertIcon />
               Not connected
             </Alert>
-            <Button mb={6} colorScheme="teal" onClick={login}>
+            <Text textAlign="center" fontWeight="bold">
+              Please connect your Wallet
+            </Text>
+            <Button
+              mb={6}
+              colorScheme="teal"
+              onClick={login}
+              borderRadius="50"
+              height="48px"
+              width="200px"
+              alignItems="center"
+              justifyContent="center"
+              textAlign="center"
+            >
               Connect
             </Button>
           </>

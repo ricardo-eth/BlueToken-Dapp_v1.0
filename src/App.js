@@ -1,24 +1,15 @@
-import logo from './img/logo.svg';
-import './styles/App.css';
+import { Switch, Route, Redirect } from "react-router-dom";
+import { HomePage, ERC20Page, FaucerPage, AccountPage } from "./Pages";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          WELCOME TEMPLATE.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route exact path="/ERC20" component={ERC20Page} />
+      <Route exact path="/Faucer" component={FaucerPage} />
+      <Route exact path="/Account" component={AccountPage} />
+      <Redirect to="/" />
+    </Switch>
   );
 }
 

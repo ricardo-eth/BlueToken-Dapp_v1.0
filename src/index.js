@@ -1,14 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './styles/index.css';
-import App from './App';
-import reportWebVitals from './test/reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Web3Provider } from "web3-hooks";
+import { ChakraProvider } from "@chakra-ui/react";
+import { BrowserRouter as Router } from "react-router-dom";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Router>
+    <React.StrictMode>
+      <Web3Provider>
+        <ChakraProvider>
+          <App />
+        </ChakraProvider>
+      </Web3Provider>
+    </React.StrictMode>
+  </Router>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -6,7 +6,9 @@
 **NOTE:** 
 - The BlueToken Faucet has been deployed on the Rinkeby testnet
 - The owner has additional functionality: setDelay and setTokenAmount
-- BlueToken Hardhat address GitHub : https://github.com/ricardo-eth/BlueToken-Hardhat_v1.0
+- Adresse ERC20 - BlueToken : 0x85211679fDF491E18676B623db07cABCaF815316
+- Adresse Faucet - BlueToken : 0xAD15db57F7342FD4CF80719013dBa63B378b4066
+- BlueToken Hardhat GitHub address : https://github.com/ricardo-eth/BlueToken-Hardhat_v1.0
 
 # ![loading](./public/img/InterfaceFaucet.png)
 
@@ -121,7 +123,7 @@ Clone Repo Git : https://github.com/ricardo-eth/BlueToken-Dapp_v1.0/tree/main
 
 | Network  | Address |
 | ------------- | ------------- |
-| Rinkeby  | [0xA6dB68cfE4C4735d1a2158Bc4e2D6C663e038cD7](https://rinkeby.etherscan.io/token/0xA6dB68cfE4C4735d1a2158Bc4e2D6C663e038cD7)  |
+| Rinkeby  | [0x85211679fDF491E18676B623db07cABCaF815316](https://rinkeby.etherscan.io/token/0x85211679fDF491E18676B623db07cABCaF815316)  |
 
 <br />
 

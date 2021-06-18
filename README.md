@@ -4,6 +4,7 @@
 
 
 **NOTE:** 
+- The BlueToken Faucet has been deployed on Netlify : https://github.com/ricardo-eth/BlueToken-Hardhat_v1.0
 - The BlueToken Faucet has been deployed on the Rinkeby testnet
 - The owner has additional functionality: setDelay and setTokenAmount
 - Adresse ERC20 - BlueToken : 0x85211679fDF491E18676B623db07cABCaF815316

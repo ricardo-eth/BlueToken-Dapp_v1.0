@@ -4,8 +4,9 @@
 
 
 **NOTE:** 
-- The blueToken faucet has been deployed on the rinkeby testnet
+- The BlueToken Faucet has been deployed on the Rinkeby testnet
 - The owner has additional functionality: setDelay and setTokenAmount
+- BlueToken Hardhat address GitHub : https://github.com/ricardo-eth/BlueToken-Hardhat_v1.0
 ## Features :
 
 - Project set up using :
@@ -52,6 +53,7 @@ Clone Repo Git : https://github.com/ricardo-eth/BlueToken-Dapp_v1.0/tree/main
 ```zsh
 % yarn start
 ```
+# ![loading](./public/img/MetaMaskLogo.png)
 ## How to Add Your Custom BlueToken (BTKn) to MetaMask
 
 1. Open MetaMask and click on the "burger" menu icon:

@@ -2,13 +2,11 @@ import { useState, useEffect, useContext } from "react";
 import {
   Flex,
   Heading,
-  chakra,
   Button,
   Box,
   Stack,
   useColorModeValue,
   useToast,
-  Input,
 } from "@chakra-ui/react";
 import { HeaderComp as Header, Countdown, OwnerOptions } from "../components";
 import { useContract } from "web3-hooks";
@@ -34,7 +32,6 @@ function FaucetPage() {
       const rest = await faucet.timeRest();
       setCounter(Number(rest.toString()));
     } catch (e) {
-      console.log(e);
       toast({
         title: `${e.message}`,
         status: "error",
@@ -114,9 +111,17 @@ function FaucetPage() {
   return (
     <>
       <Header />
-      <Flex flexDirection="column" alignItems="center" m={4} h="300px">
-        <Heading>Faucet Page</Heading>
-
+      <Flex flexDirection="column" alignItems="center" m={4}>
+        <Heading
+          textAlign="center"
+          as="h1"
+          size="4xl"
+          isTruncated
+          p={3}
+          marginBottom="10"
+        >
+          Faucet Page
+        </Heading>
         <Flex p={5} alignItems="center" justifyContent="center">
           <Box
             mx="auto"

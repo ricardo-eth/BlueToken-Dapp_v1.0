@@ -1,6 +1,3 @@
-import { Flex, Heading, Stack, Input, Button, Box } from "@chakra-ui/react";
-import { useColorModeValue, chakra } from "@chakra-ui/react";
-
 const Countdown = ({ counter }) => {
   let totalSeconds = counter;
   let day = Math.floor(totalSeconds / (24 * 3600));
@@ -10,9 +7,9 @@ const Countdown = ({ counter }) => {
 
   return (
     <>
+      <p>You need to wait :</p>
       <p>
-        You need to wait {day} Days, {hours} Hours, {min} Minutes, {sec}
-        Seconds
+        {day} Days, {hours} Hours, {min} Minutes, {sec} Seconds
       </p>
     </>
   );

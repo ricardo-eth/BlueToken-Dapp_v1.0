@@ -1,4 +1,4 @@
-export const BlueTokenAddress = "0xA6dB68cfE4C4735d1a2158Bc4e2D6C663e038cD7";
+export const BlueTokenAddress = "0x85211679fDF491E18676B623db07cABCaF815316";
 
 export const BlueTokenAbi = [
   {

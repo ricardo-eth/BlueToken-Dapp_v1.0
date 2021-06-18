@@ -19,29 +19,6 @@ function ERC20Page() {
   const [userBalance, setUserBalance] = useState();
   const toast = useToast();
 
-  const handleBalanceOf = async () => {
-    try {
-      const tx = await bluetoken.balanceOf(
-        "0x8d9ccc9596237e5fd4b88e71e615a2adaa15a415"
-      );
-      console.log(tx.toString(), "BTKn");
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  const handleAllowance = async () => {
-    try {
-      const tx = await bluetoken.allowance(
-        "0x8d9ccc9596237e5fd4b88e71e615a2adaa15a415",
-        "0x60eaec2089c4170aabf24e2bab6813b5d0cf743a"
-      );
-      console.log(tx.toString(), "BTKn");
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
   useEffect(() => {
     if (bluetoken) {
       const getInfo = async () => {
@@ -64,15 +41,22 @@ function ERC20Page() {
       };
       getInfo();
     }
-  }, [bluetoken, toast]);
+  }, [bluetoken, web3State.account, toast]);
 
   return (
     <>
       <Header />
       <Flex flexDirection="column" p={10}>
         <Center>
-          <Heading>
-            <p>ERC20 Page</p>
+          <Heading
+            textAlign="center"
+            as="h1"
+            size="4xl"
+            isTruncated
+            p={3}
+            marginBottom="10"
+          >
+            ERC20 Page
           </Heading>
         </Center>
 
@@ -92,12 +76,6 @@ function ERC20Page() {
             <MetaMaskTransfer bluetoken={bluetoken} />
           </Box>
         </Stack>
-        <button type="button" onClick={handleBalanceOf}>
-          BalanceOf
-        </button>
-        <button type="button" onClick={handleAllowance}>
-          Allowance
-        </button>
       </Flex>
     </>
   );

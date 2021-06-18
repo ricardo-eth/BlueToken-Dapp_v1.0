@@ -14,7 +14,6 @@ import {
 const OwnerOptions = ({ faucet, setAmount }) => {
   const [transferAmount, setTransferAmount] = useState();
   const [delay, setDelay] = useState();
-  const [timeLeft, setTimeLeft] = useState(0);
   const toast = useToast();
 
   const handleSetTransferAmount = async () => {
@@ -42,8 +41,6 @@ const OwnerOptions = ({ faucet, setAmount }) => {
         position: "top",
         isClosable: true,
       });
-      const time = await faucet.delay();
-      setTimeLeft(time.toString());
     } catch (e) {
       toast({
         title: `${e.message}`,

@@ -1,21 +1,25 @@
 import React from "react";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { ethers } from "ethers";
-import { Web3Context } from "web3-hooks";
-import { Stack, Input, Button, Box, Heading } from "@chakra-ui/react";
-import { Flex, useColorModeValue, chakra } from "@chakra-ui/react";
+
+import { Stack, Input, Button, Box } from "@chakra-ui/react";
+import { Flex, useColorModeValue, chakra, useToast } from "@chakra-ui/react";
 
 function MetaMaskBalanceOf({ bluetoken }) {
-  const [web3State] = useContext(Web3Context);
   const [ethBalance, setEthBalance] = useState(0);
-  const [address, setAddress] = useState(ethers.constants.AddressZero);
+  const [address, setAddress] = useState();
+  const toast = useToast();
 
   const handleClickGetBalance = async () => {
     try {
       const balance = await bluetoken.balanceOf(address);
       setEthBalance(ethers.utils.formatEther(balance));
     } catch (e) {
-      console.log(e);
+      toast({
+        title: `${e.message}`,
+        status: "error",
+        isClosable: true,
+      });
     }
   };
   return (
@@ -32,7 +36,15 @@ function MetaMaskBalanceOf({ bluetoken }) {
           w="400px"
         >
           <Box mt={2}>
-            <Heading>BalanceOf</Heading>
+            <chakra.h2
+              fontSize="lg"
+              fontWeight="bold"
+              mt={2}
+              color={useColorModeValue("gray.800", "white")}
+            >
+              BalanceOf
+            </chakra.h2>
+
             <Stack spacing={3}>
               <Input
                 variant="flushed"

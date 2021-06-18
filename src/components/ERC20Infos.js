@@ -3,7 +3,6 @@ import { Flex, Stack, Box, chakra } from "@chakra-ui/react";
 import { useColorModeValue } from "@chakra-ui/react";
 
 function ERC20Infos({ tokenName, tokenSymbol, tokenTotalSupply, userBalance }) {
-  console.log(tokenName);
   return (
     <>
       <Flex p={5} alignItems="center" justifyContent="center">

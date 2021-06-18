@@ -1,12 +1,57 @@
-# ERC20-Faucet BlueToken (BTKn)
+# BlueToken-Dapp_v1.0 - Faucet (BTKn)
 
-## About
-**NOTES**:
- - The following specifications use syntax from Solidity `0.8.0` (or above)
- - An ERC20 Token Faucet on the Rinkeby, Ropsten, Kovan and Görli testnets.
+# ![loading](./public/img/Main.png)
 
-<br />
 
+**NOTE:** 
+- The blueToken faucet has been deployed on the rinkeby testnet
+- The owner has additional functionality: setDelay and setTokenAmount
+## Features :
+
+- Project set up using :
+
+```js
+    "dependencies": {
+    "@chakra-ui/icons": "^1.0.13",
+    "@chakra-ui/react": "^1.6.3",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.12.2",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.7",
+    "ethers": "^5.3.0",
+    "framer-motion": "^4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.3.2",
+    "web-vitals": "^1.0.1",
+    "web3-hooks": "^1.0.3"
+  },
+```
+### Install :
+
+Clone Repo Git : https://github.com/ricardo-eth/BlueToken-Dapp_v1.0/tree/main
+
+```zsh
+% git clone git@github.com:ricardo-eth/BlueToken-Dapp_v1.0.git
+% cd BlueToken-Dapp_v1.0
+```
+### Install dependencies :
+
+```zsh
+% yarn install
+```
+### Run the app in the devlopement mode :
+
+```zsh
+% yarn start
+```
 ## How to Add Your Custom BlueToken (BTKn) to MetaMask
 
 1. Open MetaMask and click on the "burger" menu icon:
@@ -26,18 +71,13 @@
 | Network  | Address |
 | ------------- | ------------- |
 | Rinkeby  | [0xA6dB68cfE4C4735d1a2158Bc4e2D6C663e038cD7](https://rinkeby.etherscan.io/token/0xA6dB68cfE4C4735d1a2158Bc4e2D6C663e038cD7)  |
-| Ropsten  | [xxx](https://ropsten.etherscan.io/token/xxx)  |
-| Kovan  | [xxx](https://kovan.etherscan.io/token/xxx)  |
-| Görli  | [xxx](https://goerli.etherscan.io/address/xxx)  |
+
 <br />
 
 ## Testnet Ether Faucets
 
 Testnet   | Explorers                     | Testnet ETH Faucets
 :-------- |:----------------------------- |:-------------------------
-Rinkeby   | https://rinkeby.etherscan.io/ | xxx |
-Ropsten   | https://ropsten.etherscan.io/ | xxx |
-Kovan     | https://kovan.etherscan.io/   | xxx |
-Görli     | https://goerli.etherscan.io/  | xxx |
+Rinkeby   | https://rinkeby.etherscan.io/ | https://faucet.rinkeby.io/ |
 
 <br />

@@ -7,6 +7,9 @@
 - The BlueToken Faucet has been deployed on the Rinkeby testnet
 - The owner has additional functionality: setDelay and setTokenAmount
 - BlueToken Hardhat address GitHub : https://github.com/ricardo-eth/BlueToken-Hardhat_v1.0
+
+# ![loading](./public/img/InterfaceFaucet.png)
+
 ## Features :
 
 - Project set up using :

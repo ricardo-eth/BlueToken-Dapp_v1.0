@@ -2,12 +2,13 @@ import { useState, useEffect, useContext } from "react";
 import {
   Flex,
   Heading,
-  Center,
+  chakra,
   Button,
   Box,
   Stack,
   useColorModeValue,
   useToast,
+  Input,
 } from "@chakra-ui/react";
 import { HeaderComp as Header, Countdown } from "../components";
 import { useContract } from "web3-hooks";
@@ -94,11 +95,7 @@ function FaucetPage() {
     <>
       <Header />
       <Flex flexDirection="column" alignItems="center" m={4} h="300px">
-        <Center>
-          <Heading>
-            <p>Faucet Page</p>
-          </Heading>
-        </Center>
+        <Heading>Faucet Page</Heading>
 
         <Flex p={5} alignItems="center" justifyContent="center">
           <Box
@@ -129,6 +126,45 @@ function FaucetPage() {
                 ) : (
                   <Countdown counter={counter} />
                 )}
+              </Stack>
+            </Box>
+          </Box>
+        </Flex>
+        <Flex p={5} alignItems="center" justifyContent="center">
+          <Box
+            mx="auto"
+            px={8}
+            py={4}
+            rounded="lg"
+            shadow="lg"
+            bg={useColorModeValue("gray.100", "gray.900")}
+            maxW="2xl"
+            w="400px"
+          >
+            <Box mt={2}>
+              <chakra.h2
+                fontSize="lg"
+                fontWeight="bold"
+                mt={2}
+                color={useColorModeValue("gray.800", "white")}
+              >
+                Owner Option
+              </chakra.h2>
+              <Stack spacing={3}>
+                <Box>
+                  <Input variant="flushed" placeholder="set1" id="set1" />
+
+                  <Button colorScheme="teal" size="md" mt="5" mb="10">
+                    set1
+                  </Button>
+                </Box>
+                <Box>
+                  <Input variant="flushed" placeholder="set2" id="set2" />
+
+                  <Button colorScheme="teal" size="md" mt="5" mb="10">
+                    set2
+                  </Button>
+                </Box>
               </Stack>
             </Box>
           </Box>

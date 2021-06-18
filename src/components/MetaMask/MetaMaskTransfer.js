@@ -5,7 +5,7 @@ import { Web3Context } from "web3-hooks";
 import { Flex, Heading, Stack, Input, Button, Box } from "@chakra-ui/react";
 import { useColorModeValue } from "@chakra-ui/react";
 
-function MetaMaskTransfer() {
+function MetaMaskTransfer({ bluetoken }) {
   const [web3State] = useContext(Web3Context);
   const [setEthBalance] = useState(0);
   const [address, setAddress] = useState(ethers.constants.AddressZero);
@@ -76,30 +76,7 @@ function MetaMaskTransfer() {
           </Box>
         </Box>
       </Flex>
-      <Flex p={5} alignItems="center" justifyContent="center">
-        <Box
-          mx="auto"
-          px={8}
-          py={4}
-          rounded="lg"
-          shadow="lg"
-          bg={useColorModeValue("gray.100", "gray.900")}
-          maxW="2xl"
-          w="400px"
-        >
-          <Box mt={2}>
-            <Stack spacing={3}>
-              <Box>
-                <Heading>Verify</Heading>
-                <p>Verify destination address</p>
-                <label className="address-eth2send" htmlFor="eth2send">
-                  {address}
-                </label>
-              </Box>
-            </Stack>
-          </Box>
-        </Box>
-      </Flex>
+
       <Flex p={5} alignItems="center" justifyContent="center">
         <Box
           mx="auto"

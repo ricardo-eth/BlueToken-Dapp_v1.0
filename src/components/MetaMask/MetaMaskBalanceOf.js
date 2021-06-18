@@ -5,14 +5,14 @@ import { Web3Context } from "web3-hooks";
 import { Stack, Input, Button, Box, Heading } from "@chakra-ui/react";
 import { Flex, useColorModeValue, chakra } from "@chakra-ui/react";
 
-function MetaMaskBalanceOf() {
+function MetaMaskBalanceOf({ bluetoken }) {
   const [web3State] = useContext(Web3Context);
   const [ethBalance, setEthBalance] = useState(0);
   const [address, setAddress] = useState(ethers.constants.AddressZero);
 
   const handleClickGetBalance = async () => {
     try {
-      const balance = await web3State.provider.getBalance(address);
+      const balance = await bluetoken.balanceOf(address);
       setEthBalance(ethers.utils.formatEther(balance));
     } catch (e) {
       console.log(e);
@@ -32,7 +32,7 @@ function MetaMaskBalanceOf() {
           w="400px"
         >
           <Box mt={2}>
-            <Heading>Balance</Heading>
+            <Heading>BalanceOf</Heading>
             <Stack spacing={3}>
               <Input
                 variant="flushed"

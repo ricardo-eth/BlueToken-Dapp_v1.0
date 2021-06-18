@@ -7,6 +7,7 @@ import MetaMaskBalanceOf from "./MetaMask/MetaMaskBalanceOf";
 import MetaMaskTransfer from "./MetaMask/MetaMaskTransfer";
 import Countdown from "./Countdown";
 import OwnerOptions from "./OwnerOptions";
+import ERC20Infos from "./ERC20Infos";
 
 export {
   HeaderComp,
@@ -18,4 +19,5 @@ export {
   MetaMaskTransfer,
   Countdown,
   OwnerOptions,
+  ERC20Infos,
 };

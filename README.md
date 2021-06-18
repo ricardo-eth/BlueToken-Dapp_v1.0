@@ -10,6 +10,45 @@
 
 # ![loading](./public/img/InterfaceFaucet.png)
 
+## Project Architecture :
+
+```bash
+
+public
+├── img
+│   └── All img..
+├── favicon.ico
+├── index.html
+├── manifest.json
+├── robots.txt
+├── _redirects
+│
+│
+src
+├── App.js
+├── components
+│   ├── Countdown.js
+│   ├── Header.js
+│   ├── OwnerOptions.js
+│   ├── index.js
+│   ├── MetaMask
+│   │   ├── MetaMaskBalanceOf.js
+│   │   ├── MetaMaskInfo.js
+│   │   ├── MetaMaskInstalled.js
+│   │   └── MetaMaskTransfer.js
+│   └── Navigation
+│       ├── Navigation.js
+│       └── NavigationLogged.js
+├── contracts
+│   ├── BlueToken.js
+│   └── Faucet.js
+├── Pages
+│   ├── ERC20.js
+│   ├── Faucet.j
+│   ├── Home.js
+│   └── index.js
+└── index.js
+```
 ## Features :
 
 - Project set up using :

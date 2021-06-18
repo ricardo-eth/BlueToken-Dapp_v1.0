@@ -25,23 +25,34 @@ function MetaMaskTransfer({ bluetoken }) {
   const [allowanceTo, setAllowanceTo] = useState("0x");
   const [allowanceAmount, setAllowanceAmount] = useState("0");
   const toast = useToast();
+  const [btnLoadingTransfer, setBtnLoadingTransfer] = useState(false);
+  const [btnLoadingTransferFrom, setBtnLoadingTransferFrom] = useState(false);
+  const [btnLoadingApprove, setBtnLoadingApprove] = useState(false);
 
   const handleClickSend = async () => {
+    setBtnLoadingTransfer(true);
     const weiAmount = ethers.utils.parseEther(eth2Send);
     try {
       const tx = await bluetoken.transfer(address, weiAmount);
       await tx.wait();
-      console.log("Transfered");
+      toast({
+        title: `Transfer Done bg`,
+        status: "success",
+        isClosable: true,
+      });
     } catch (e) {
       toast({
         title: `${e.message}`,
         status: "error",
         isClosable: true,
       });
+    } finally {
+      setBtnLoadingTransfer(false);
     }
   };
 
   const handleClickSendFrom = async () => {
+    setBtnLoadingTransferFrom(true);
     const weiAmount = ethers.utils.parseEther(eth2SendFrom);
     try {
       const tx = await bluetoken.transferFrom(
@@ -50,27 +61,41 @@ function MetaMaskTransfer({ bluetoken }) {
         weiAmount
       );
       await tx.wait();
-      console.log("TransferedFrom");
+      toast({
+        title: `Nice TransferFrom`,
+        status: "success",
+        isClosable: true,
+      });
     } catch (e) {
       toast({
         title: `${e.message}`,
         status: "error",
         isClosable: true,
       });
+    } finally {
+      setBtnLoadingTransferFrom(false);
     }
   };
 
   const handleApprove = async () => {
+    setBtnLoadingApprove(true);
     const weiAmount = ethers.utils.parseEther(approveAmount);
     try {
       const tx = await bluetoken.approve(approveAddress, weiAmount);
       await tx.wait();
+      toast({
+        title: "Approved wonderfully",
+        status: "success",
+        isClosable: true,
+      });
     } catch (e) {
       toast({
         title: `${e.message}`,
         status: "error",
         isClosable: true,
       });
+    } finally {
+      setBtnLoadingApprove(false);
     }
   };
 
@@ -137,6 +162,9 @@ function MetaMaskTransfer({ bluetoken }) {
                     />
                   </Stack>
                   <Button
+                    isLoading={btnLoadingTransfer}
+                    loadingText="In process"
+                    spinnerPlacement="start"
                     colorScheme="teal"
                     size="md"
                     mt="5"
@@ -210,6 +238,9 @@ function MetaMaskTransfer({ bluetoken }) {
                     />
                   </Stack>
                   <Button
+                    isLoading={btnLoadingTransferFrom}
+                    loadingText="In process"
+                    spinnerPlacement="start"
                     colorScheme="teal"
                     size="md"
                     mt="5"
@@ -273,6 +304,9 @@ function MetaMaskTransfer({ bluetoken }) {
                     />
                   </Stack>
                   <Button
+                    isLoading={btnLoadingApprove}
+                    loadingText="In process"
+                    spinnerPlacement="start"
                     colorScheme="teal"
                     size="md"
                     mt="5"

@@ -6,6 +6,7 @@ import MetaMaskInstalled from "./MetaMask/MetaMaskInstalled";
 import MetaMaskBalanceOf from "./MetaMask/MetaMaskBalanceOf";
 import MetaMaskTransfer from "./MetaMask/MetaMaskTransfer";
 import Countdown from "./Countdown";
+import OwnerOptions from "./OwnerOptions";
 
 export {
   HeaderComp,
@@ -16,4 +17,5 @@ export {
   MetaMaskBalanceOf,
   MetaMaskTransfer,
   Countdown,
+  OwnerOptions,
 };

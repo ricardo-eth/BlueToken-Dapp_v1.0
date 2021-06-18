@@ -10,7 +10,7 @@ import {
   useToast,
   Input,
 } from "@chakra-ui/react";
-import { HeaderComp as Header, Countdown } from "../components";
+import { HeaderComp as Header, Countdown, OwnerOptions } from "../components";
 import { useContract } from "web3-hooks";
 import { FaucetAddress, FaucetAbi } from "../contracts/Faucet";
 import { ethers } from "ethers";
@@ -23,6 +23,7 @@ function FaucetPage() {
   const [btnLoading, setBtnLoading] = useState(false);
   const [amount, setAmount] = useState(0);
   const [counter, setCounter] = useState(0);
+  const [owner, setOwner] = useState(0);
   const toast = useToast();
 
   const handleClaimToken = async () => {
@@ -63,6 +64,25 @@ function FaucetPage() {
         }
       };
       timeRest();
+    }
+  }, [faucet, toast]);
+
+  // owner
+  useEffect(() => {
+    if (faucet) {
+      const owner = async () => {
+        try {
+          const owner = await faucet.owner();
+          setOwner(owner.toLowerCase());
+        } catch (e) {
+          toast({
+            title: `${e.message}`,
+            status: "error",
+            isClosable: true,
+          });
+        }
+      };
+      owner();
     }
   }, [faucet, toast]);
 
@@ -130,45 +150,9 @@ function FaucetPage() {
             </Box>
           </Box>
         </Flex>
-        <Flex p={5} alignItems="center" justifyContent="center">
-          <Box
-            mx="auto"
-            px={8}
-            py={4}
-            rounded="lg"
-            shadow="lg"
-            bg={useColorModeValue("gray.100", "gray.900")}
-            maxW="2xl"
-            w="400px"
-          >
-            <Box mt={2}>
-              <chakra.h2
-                fontSize="lg"
-                fontWeight="bold"
-                mt={2}
-                color={useColorModeValue("gray.800", "white")}
-              >
-                Owner Option
-              </chakra.h2>
-              <Stack spacing={3}>
-                <Box>
-                  <Input variant="flushed" placeholder="set1" id="set1" />
-
-                  <Button colorScheme="teal" size="md" mt="5" mb="10">
-                    set1
-                  </Button>
-                </Box>
-                <Box>
-                  <Input variant="flushed" placeholder="set2" id="set2" />
-
-                  <Button colorScheme="teal" size="md" mt="5" mb="10">
-                    set2
-                  </Button>
-                </Box>
-              </Stack>
-            </Box>
-          </Box>
-        </Flex>
+        {web3State.account === owner && (
+          <OwnerOptions faucet={faucet} setAmount={setAmount} />
+        )}
       </Flex>
     </>
   );

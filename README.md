@@ -76,6 +76,7 @@ Clone Repo Git : https://github.com/ricardo-eth/BlueToken-Dapp_v1.0/tree/main
 
 <br />
 
+# ![loading](./public/img/EthLogo.png)
 ## Testnet Ether Faucets
 
 Testnet   | Explorers                     | Testnet ETH Faucets

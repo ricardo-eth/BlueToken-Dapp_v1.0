@@ -28,6 +28,7 @@ src
 ├── App.js
 ├── components
 │   ├── Countdown.js
+│   ├── ERC20Infos.js
 │   ├── Header.js
 │   ├── OwnerOptions.js
 │   ├── index.js
@@ -51,7 +52,13 @@ src
 ```
 ## Features :
 
-- Project set up using :
+**NOTE : Project set up using**
+- React : https://fr.reactjs.org/docs/create-a-new-react-app.html
+- React-router-dom : https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom
+- Ethers : https://github.com/ethers-io/ethers.js
+- Framer-motion : https://github.com/framer/motion
+- Web3-hooks : https://github.com/AbsoluteVirtueXI/web3-hooks
+
 
 ```js
     "dependencies": {

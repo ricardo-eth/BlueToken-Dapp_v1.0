@@ -1,10 +1,10 @@
 import HeaderComp from "./Header";
-import MetaMaskInstalled from "./MetaMaskInstalled";
-import MetaMaskInfo from "./MetaMaskInfo";
 import Navigation from "./Navigation/Navigation";
 import NavigationLogged from "./Navigation/NavigationLogged";
-import MetaMaskBalanceOf from "./MetaMaskBalanceOf";
-import MetaMaskTransfer from "./MetaMaskTransfer";
+import MetaMaskInfo from "./MetaMask/MetaMaskInfo";
+import MetaMaskInstalled from "./MetaMask/MetaMaskInstalled";
+import MetaMaskBalanceOf from "./MetaMask/MetaMaskBalanceOf";
+import MetaMaskTransfer from "./MetaMask/MetaMaskTransfer";
 import Countdown from "./Countdown";
 
 export {

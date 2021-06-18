@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
-import MetaMaskInfo from "./MetaMaskInfo";
+import MetaMaskInfo from "./MetaMask/MetaMaskInfo";
 import Navigation from "./Navigation/Navigation";
 
 export default function Header() {
